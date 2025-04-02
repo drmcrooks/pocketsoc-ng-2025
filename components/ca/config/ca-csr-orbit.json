@@ -1,0 +1,13 @@
+{
+    "CN": "pocket.infra",
+    "key": {
+        "algo": "rsa",
+        "size": 4096
+    },
+    "names": [
+        {
+            "C": "UK",
+            "L": "Orbit"
+        }
+    ]
+}

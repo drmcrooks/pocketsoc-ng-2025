@@ -1,0 +1,7 @@
+[cern-zeek]
+name=zeek
+baseurl=https://linuxsoft.cern.ch/repos/zeek9-qa/$basearch/os/
+enabled=1
+gpgcheck=1
+priority=1
+gpgkey=https://linuxsoft.cern.ch/repos/RPM-GPG-KEY-kojiv2
