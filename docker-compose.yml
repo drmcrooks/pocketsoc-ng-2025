@@ -285,8 +285,6 @@ services:
     #privileged: true
     cap_add:
       - NET_ADMIN
-    volumes:
-      - zeek_data:/opt/pocketsoc-ng/data
 #    networks:
 #      - mirror
 
