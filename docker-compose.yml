@@ -4,36 +4,36 @@ services:
 
 # Infrastructure
 
-  router:
-    build: ./components/router/
-    container_name: router
-    restart: always
-    volumes:
-      - router_data:/opt/pocketsoc-ng/data
-    privileged: true
-    #cap_add:
-    #  - NET_ADMIN
+#  router:
+#    build: ./components/router/
+#    container_name: router
+#    restart: always
+#    volumes:
+#      - router_data:/opt/pocketsoc-ng/data
+#    privileged: true
+#    #cap_add:
+#    #  - NET_ADMIN
 #    networks:
 #      - internal
 #      - mirror
 
-  documentation_builder:
-      build: ./components/documentation_builder/
-      container_name: documentation_builder
-      restart: always
-      volumes:
-        - docs_data:/docs
+#  documentation_builder:
+#      build: ./components/documentation_builder/
+#      container_name: documentation_builder
+#      restart: always
+#      volumes:
+#        - docs_data:/docs
 #      networks:
 #        - mirror
 
-  documentation:
-      build: ./components/documentation/
-      container_name: documentation
-      restart: always
-      depends_on:
-        - documentation_builder
-      volumes:
-        - docs_data:/docs:ro
+#  documentation:
+#      build: ./components/documentation/
+#      container_name: documentation
+#      restart: always
+#      depends_on:
+#        - documentation_builder
+#      volumes:
+#        - docs_data:/docs:ro
 #      networks:
 #        - mirror
 
