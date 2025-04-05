@@ -1,6 +1,6 @@
 FROM rockylinux:9
 
-RUN dnf config-manager --enable crb
+RUN dnf -y install dnf-plugins-core && dnf config-manager --enable crb
 RUN dnf install -y bind-utils iputils iproute net-tools traceroute net-tools tcpdump iptables lsof vim openssh-clients ncurses libpcap libpcap-devel gcc cmake
 RUN dnf update -y
 
