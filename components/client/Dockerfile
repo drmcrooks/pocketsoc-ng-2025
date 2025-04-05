@@ -1,7 +1,6 @@
 FROM rockylinux:9
 
-#RUN dnf install -y net-tools tcpdump iptables lsof   vim  git libpcap-devel pkgconfig libtool autoconf automake bash make psmisc && \
-RUN dnf install -y bind-utils iputils iproute net-tools traceroute net-tools tcpdump iptables lsof vim openssh-clients
+RUN dnf install -y bind-utils iputils iproute net-tools traceroute net-tools tcpdump iptables lsof vim openssh-clients ncurses
 RUN dnf update -y
 
 ADD ./bin /opt/pocketsoc-ng/bin
