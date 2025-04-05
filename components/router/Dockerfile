@@ -2,7 +2,7 @@ FROM rockylinux:9
 
 #RUN dnf install -y net-tools tcpdump iptables lsof bind-utils dnsmasq vim git nmap iputils iproute
 
-RUN dnf install -y iptables iproute
+RUN dnf install -y iptables iproute ncurses
 
 ADD ./bin /opt/pocketsoc-ng/bin
 
