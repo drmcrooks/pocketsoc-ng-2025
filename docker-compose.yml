@@ -118,6 +118,18 @@ services:
 #    networks:
 #      - mirror
 
+# MISP
+
+  clamav:
+    environment:
+      - FQDN=${FQDN:-misp.local}
+      - HTTPS_PORT=${HTTPS_PORT:-443}
+    hostname: ${CLAMAV_HOSTNAME:-misp_clamav}
+    image: clamav/clamav:1.0_base
+    restart: unless-stopped
+    volumes:
+      - ./persistent/${COMPOSE_PROJECT_NAME}/clamav_db/:/var/lib/clamav
+
 ## Zeek
 
   zeek:
