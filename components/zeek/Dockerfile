@@ -1,34 +1,27 @@
-FROM rockylinux:9
+FROM zeek/zeek:9.0.0-rc2
 
-COPY ./repo/zeek.repo /etc/yum.repos.d/
+RUN apt-get update
 
-RUN dnf install ethtool epel-release wget ncurses vim -y 
+RUN apt-get install -y tcpdump supervisor tcpreplay apt-transport-https curl gnupg2
 
-#RUN dnf install -y cmake make gcc gcc-c++ flex bison libpcap-devel openssl-devel python3 python3-devel swig zlib-devel git
+RUN mkdir -p /usr/share/keyrings/
 
-RUN wget https://repo.almalinux.org/development/almalinux/9/devel/noarch/Packages/python3-semantic_version-2.8.4-7.el9.noarch.rpm
-RUN dnf localinstall -y python3-semantic_version-2.8.4-7.el9.noarch.rpm
-RUN dnf config-manager --set-enabled crb
-RUN dnf clean all
+RUN curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/share/keyrings/elastic-7.x.gpg
 
-RUN dnf install -y zeek tcpdump supervisor tcpreplay && dnf update -y && \ 
-    dnf clean all && rm -rf /var/cache/dnf
+RUN echo "deb [signed-by=/usr/share/keyrings/elastic-7.x.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" >> /etc/apt/sources.list.d/elastic-7.x.list
 
-#RUN git clone --recursive https://github.com/zeek/zeek && cd ./zeek && ./configure --prefix="/opt/zeek" && make && make install
+RUN apt-get update
 
-RUN rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch 
-COPY ./repo/elastic-oss.repo /etc/yum.repos.d/
+RUN apt-get install -y filebeat
 
-RUN dnf install -y filebeat
+RUN apt-get upgrade -y
 
-env PATH /opt/zeek/bin/:$PATH
+ADD ./config/zeekctl.cfg /usr/local/zeek/etc/zeekctl.cfg
+ADD ./config/networks.cfg /usr/local/zeek/etc/networks.cfg
+ADD ./config/node.cfg /usr/local/zeek/etc/node.cfg
 
-ADD ./config/zeekctl.cfg /opt/zeek/etc/zeekctl.cfg
-ADD ./config/networks.cfg /opt/zeek/etc/networks.cfg
-ADD ./config/node.cfg /opt/zeek/etc/node.cfg
-
-COPY ./config/local.zeek /opt/zeek/share/zeek/site/local.zeek
-COPY ./config/mattermost.zeek /opt/zeek/share/zeek/site/mattermost.zeek
+COPY ./config/local.zeek /usr/local/zeek/share/zeek/site/local.zeek
+COPY ./config/mattermost.zeek /usr/local/zeek/share/zeek/site/mattermost.zeek
 
 COPY ./config/filebeat.yml /etc/filebeat/filebeat.yml
 
