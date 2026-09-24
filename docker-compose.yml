@@ -104,6 +104,19 @@ services:
 #    networks:
 #      - mirror
 
+## Logstash
+
+  logstash-zeek:
+    build: ./components/logstash-zeek
+    restart: always
+    container_name: logstash-zeek
+    environment:
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: ${OPENSEARCH_INITIAL_ADMIN_PASSWORD}
+#        - ELASTIC_PASSWORD=${ADMIN_PASSWORD}
+    ports:
+      - 5044:5044
+#    networks:
+#      - mirror
 
 ## Zeek
 
