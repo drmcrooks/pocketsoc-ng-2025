@@ -1,4 +1,5 @@
-FROM zeek/zeek:9.0.0-rc2
+#FROM zeek/zeek:9.0.0-rc2
+FROM zeek/zeek:lts
 
 RUN apt-get update
 
