@@ -58,6 +58,13 @@ filebeat.inputs:
 
 - input_type: log
   paths:
+    - "/usr/local/zeek/logs/current/notice.log"
+  fields:
+    type: "zeek-notice"
+  fields_under_root: true
+
+- input_type: log
+  paths:
     - "/usr/local/zeek/logs/current/ssl.log"
   fields:
     type: "zeek-ssl"
