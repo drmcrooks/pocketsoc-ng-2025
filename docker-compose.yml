@@ -244,6 +244,7 @@ services:
     restart: always
     volumes:
       - zeek_data:/opt/pocketsoc-ng/data
+      - /opt/pocketsoc-ng/pcaps:/opt/pocketsoc-ng/pcaps:rw
     environment:
         ZEEKHOST: ${HOST_HOSTNAME}
     #privileged: true
@@ -256,6 +257,7 @@ services:
     restart: always
     volumes:
       - zeek-udp_data:/opt/pocketsoc-ng/data
+      - /opt/pocketsoc-ng/pcaps:/opt/pocketsoc-ng/pcaps:rw
     environment:
         ZEEKHOST: ${HOST_HOSTNAME}
     ports:
