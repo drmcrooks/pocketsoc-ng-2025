@@ -11,6 +11,7 @@ chmod +x /opt/pocketsoc-ng/bin/notifier.sh
 
 echo ${ZEEKHOST} > /opt/pocketsoc-ng/data/zeekhost
 echo NULL > /opt/pocketsoc-ng/data/authkey
+echo NULL > /opt/pocketsoc-ng/data/webhook
 
 which supervisord
 
