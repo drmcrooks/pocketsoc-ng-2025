@@ -2,7 +2,7 @@ FROM zeek/zeek:9.0.0-rc2
 
 RUN apt-get update
 
-RUN apt-get install -y tcpdump supervisor tcpreplay apt-transport-https curl gnupg2
+RUN apt-get install -y tcpdump supervisor tcpreplay apt-transport-https curl gnupg2 vim
 
 RUN mkdir -p /usr/share/keyrings/
 
