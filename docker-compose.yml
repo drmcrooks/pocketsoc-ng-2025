@@ -259,7 +259,7 @@ services:
     environment:
         ZEEKHOST: ${HOST_HOSTNAME}
     ports:
-      - 10000:10000
+      - 10000:10000/udp
     #privileged: true
     cap_add:
       - NET_ADMIN
