@@ -249,8 +249,20 @@ services:
     #privileged: true
     cap_add:
       - NET_ADMIN
-#    networks:
-#      - mirror
+
+  zeek-udp:
+    build: ./components/zeek-udp/
+    container_name: zeek-udp
+    restart: always
+    volumes:
+      - zeek-udp_data:/opt/pocketsoc-ng/data
+    environment:
+        ZEEKHOST: ${HOST_HOSTNAME}
+    ports:
+      - 10000:10000
+    #privileged: true
+    cap_add:
+      - NET_ADMIN
 
 ## "Internal"
 
@@ -297,6 +309,7 @@ volumes:
   client_data:
   sshserver_data:
   zeek_data:
+  zeek-udp_data:
   docs_data:
   certificates:
     external: true
