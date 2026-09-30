@@ -140,7 +140,13 @@ redef Intel::read_files += {
 
 @load policy/frameworks/intel/do_notice.zeek
 
+# Credit https://github.com/kantorkel/zeek-notice-mattermost
+
 @load ./mattermost.zeek
+
+redef Notice::mattermost_webhook_url = "https://your-mattermost-server/hooks/xxx-generatedkey-xxx";
+redef Notice::mattermost_channel = "#zeek-channel";
+redef Notice::mattermost_username = "Big Brother";
 
 hook Notice::policy(n: Notice::Info)
 {
