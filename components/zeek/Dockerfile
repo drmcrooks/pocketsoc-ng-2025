@@ -21,7 +21,7 @@ ADD ./config/networks.cfg /usr/local/zeek/etc/networks.cfg
 ADD ./config/node.cfg /usr/local/zeek/etc/node.cfg
 
 COPY ./config/local.zeek /usr/local/zeek/share/zeek/site/local.zeek
-COPY ./config/mattermost.zeek /usr/local/zeek/share/zeek/site/mattermost.zeek
+COPY ./config/notice_mattermost.zeek /usr/local/zeek/share/zeek/site/notice_mattermost.zeek
 
 COPY ./config/filebeat.yml /etc/filebeat/filebeat.yml
 
