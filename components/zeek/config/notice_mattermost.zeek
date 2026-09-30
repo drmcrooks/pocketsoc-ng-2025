@@ -1,4 +1,5 @@
 ##! This script is providing slack notifications for notices
+# Credit zeek-notice-mattermost and zeek-notice-slack
 
 @load base/frameworks/notice
 @load base/utils/active-http
