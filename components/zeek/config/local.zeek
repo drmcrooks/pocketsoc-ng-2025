@@ -140,7 +140,7 @@ redef Intel::read_files += {
 
 @load policy/frameworks/intel/do_notice.zeek
 
-# Credit https://github.com/kantorkel/zeek-notice-mattermost
+# Credit zeek-notice-mattermost and zeek-notice-slack
 
 @load ./notice_mattermost.zeek
 
