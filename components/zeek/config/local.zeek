@@ -142,7 +142,7 @@ redef Intel::read_files += {
 
 # Credit https://github.com/kantorkel/zeek-notice-mattermost
 
-@load ./mattermost.zeek
+@load ./notice_mattermost.zeek
 
 redef Notice::mattermost_webhook_url = "https://your-mattermost-server/hooks/xxx-generatedkey-xxx";
 redef Notice::mattermost_channel = "#zeek-channel";
