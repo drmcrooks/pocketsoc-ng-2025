@@ -251,20 +251,20 @@ services:
     cap_add:
       - NET_ADMIN
 
-  zeek-udp:
-    build: ./components/zeek-udp/
-    container_name: zeek-udp
-    restart: always
-    volumes:
-      - zeek-udp_data:/opt/pocketsoc-ng/data
-      - /opt/pocketsoc-ng/pcaps:/opt/pocketsoc-ng/pcaps:rw
-    environment:
-        ZEEKHOST: ${HOST_HOSTNAME}
-    ports:
-      - 10000:10000/udp
-    #privileged: true
-    cap_add:
-      - NET_ADMIN
+#  zeek-udp:
+#    build: ./components/zeek-udp/
+#    container_name: zeek-udp
+#    restart: always
+#    volumes:
+#      - zeek-udp_data:/opt/pocketsoc-ng/data
+#      - /opt/pocketsoc-ng/pcaps:/opt/pocketsoc-ng/pcaps:rw
+#    environment:
+#        ZEEKHOST: ${HOST_HOSTNAME}
+#    ports:
+#      - 10000:10000/udp
+#    #privileged: true
+#    cap_add:
+#      - NET_ADMIN
 
 ## "Internal"
 
