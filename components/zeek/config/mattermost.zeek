@@ -1,5 +1,4 @@
-##! This script is providing mattermost notifications for notices
-# Credit https://github.com/kantorkel/zeek-notice-mattermost
+##! This script is providing slack notifications for notices
 
 @load base/frameworks/notice
 @load base/utils/active-http
@@ -22,7 +21,8 @@ export {
     # Needs to be redefined to match your Mattermost Incoming Webhook URL
     const mattermost_webhook_url = "https://your-mattermost-server/hooks/xxx-generatedkey-xxx" &redef;
 
-    # Can be redefined to add a different public channel and username
+
+    # Can be redefined to add a different public channel, username and emoji
     const mattermost_channel = "" &redef;
     const mattermost_username = "Big Brother" &redef;
 
@@ -42,7 +42,7 @@ function mattermost_send_notice(webhook: string, payload: Notice::Mattermost_mes
         $client_data=to_json(payload)
     );
 
-    when ( local result = ActiveHTTP::request(request) )
+    when [request] ( local result = ActiveHTTP::request(request) )
         {
         if ( result$code != 200 )
             Reporter::warning(fmt("Mattermost notice received an error status code: %d", result$code));
