@@ -5,12 +5,9 @@ services:
 # SOC
 
 ## OpenSearch
-#     build: ./components/opensearch
-#     build: ./components/opensearch
-#    build: ./components/opensearch_dashboards
 
   opensearch-node1: # This is also the hostname of the container within the Docker network (i.e. https://opensearch-node1/)
-    image: opensearchproject/opensearch:3.8.0 # Specifying the latest available image - modify if you want a specific version
+    image: opensearchproject/opensearch:3.8.0 # 3.9.0 (or higher) breaks something
     container_name: opensearch-node1
     restart: always
     environment:
@@ -47,7 +44,7 @@ services:
 #    networks:
 #      - opensearch-net # All of the containers will join the same Docker bridge network
   opensearch-node2:
-    image: opensearchproject/opensearch:3.8.0 # This should be the same image used for opensearch-node1 to avoid issues
+    image: opensearchproject/opensearch:3.8.0 # 3.9.0 (or higher) breaks something
     container_name: opensearch-node2
     restart: always
     environment:
@@ -82,7 +79,7 @@ services:
 #      - mirror
 
   opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:3.8.0 # Make sure the version of opensearch-dashboards matches the version of opensearch installed on other nodes
+    image: opensearchproject/opensearch-dashboards:3.8.0 # 3.9.0 (or higher) breaks something
     container_name: opensearch-dashboards
     restart: always
     ports:
